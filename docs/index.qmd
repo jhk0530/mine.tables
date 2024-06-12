@@ -1,0 +1,137 @@
+---
+title: "mine.tables"
+toc: true
+---
+
+## A. Purpose of this submission
+
+::: {.callout-note appearance="simple"}
+1. Enjoyable table
+:::
+
+
+I was thinking about what table to create for the [table contest 2024](https://forum.posit.co/tag/table-contest-2024), I wanted to create a use case for a table that could be enjoyed without context or understanding of the data, I wanted to create a use case for the table that could be enjoyed without the context and understanding of the data. So, although I am not a professional game developer, I created a "Minesweeper" game using tables.
+
+::: {.callout-note appearance="simple"}
+2. Various table
+:::
+
+I wanted to showcase the capabilities of different tables.
+
+There are a lot of packages available for working with tables in R, each with their own strengths and weaknesses. I haven't used all of them, but I didn't want to limit myself to just one package.
+
+I used [reactable](https://glin.github.io/reactable/index.html), which is my favourite, [DT](https://rstudio.github.io/DT/), which was the first one I started using, and finally [gt](https://gt.rstudio.com/index.html), which has recently been getting a lot of love in the clinical domain.
+
+Of course, there are other valuable packages like flextable and data.table, but I don't have time to cover them all. 
+
+::: {.callout-note appearance="simple"}
+3. Interactive table
+:::
+
+Since I'm using [shiny](https://shiny.posit.co/), I wanted to create some interaction with the **user** or **external services** in the table, so I threw in a little bit of LLM functionality, which is all the rage these days.
+
+## B. How to play mine-sweeper
+
+::: {.callout-tip appearance="simple"}
+This can be followed as Guide with [Cicerone](https://cicerone.john-coene.com/) in Shiny application
+:::
+
+![](1.png){width="670"}
+
+![](2.png){fig-align="center" width="536"}
+
+![](3.png){fig-align="center" width="590"}
+
+![](4.png){fig-align="center" width="536"}
+
+## C. How to use Gemini
+
+::: {.callout-tip appearance="simple"}
+-   get API key from Google AI Studio (FREE!)
+-   this feature uses R package {gemini.R} see [link](https://github.com/jhk0530/gemini.R)
+:::
+
+
+![](5.png){fig-align="center"}
+
+![](6.png){fig-align="center"}
+
+![](7.png){fig-align="center"}
+
+![](8.png){fig-align="center"}
+
+![](9.png){fig-align="center"}
+
+## D. Code explanation
+
+::: {.callout-note appearance="simple"}
+Part 1. Libaries
+:::
+
+I used 11 R packages in this mine.tables
+
+```{r}
+#| eval: false  
+library(reactable)
+library(DT)
+library(gt)
+
+library(shiny)
+library(shinyWidgets)
+library(bslib)
+library(bsicons)
+library(shinyjs)
+library(cicerone)
+
+library(magrittr)
+library(gemini.R)
+```
+
+First 3 is for table work,
+and next 6 is for shiny application,
+and last 2 is for API call gemini.
+
+::: {.callout-note appearance="simple"}
+Part 2. Shiny UI
+:::
+
+Since you may see Every code, I attached image of key functions
+
+![](10.png){fig-align="center"}
+
+::: {.callout-note appearance="simple"}
+Part 3. Shiny Server
+:::
+
+Server logic is consisted with 5 major parts.
+
+1. mine sweeper game
+
+- Randomly generate data with given size and mine (START)
+- Get click input from user
+- Check if it is mine or not and show results
+
+2. reactable
+
+- To get clicked cell from user with reactable, I used `onClick` parameter of reactable to create "Shiny.setInputValue" (Javascript Event
+- render mine count, and mine emoji with `color_text` function which return HTML element with color.
+
+3. DT
+
+- To implement **Button-like** table with DT. used `escape` parameter to use HTML tag.
+- In cell element (Button) it uses `onclick` to open github repository.
+- The `pagination` doesn't affect functionality, but I left it on purpose because without it, it's hard to tell it's a table.
+
+4. gt
+
+- Also, to implement **Button-like** table with gt, I used HTML in `tab_header` to button. (Which has `onclick` for this document)
+- However, gt seems must show `body` so I used `column` to button and body to just show empty. 
+
+5. gemini and cicerone
+
+- See their own repo please.
+
+## D. Summary
+
+I made little game-like shiny application with various table R package, and I hope you enjoy it.
+
