@@ -1,6 +1,12 @@
 ---
 title: "mine.tables"
 toc: true
+date: "2024-06-12"
+author: 
+  name: "Jinhwan Kim"
+  email: "hwanistic@gmail.com"
+  url: https://github.com/jhk0530
+mainfont: "Raleway"
 ---
 
 ## A. Purpose of this submission
@@ -10,7 +16,7 @@ toc: true
 :::
 
 
-I was thinking about what table to create for the [table contest 2024](https://forum.posit.co/tag/table-contest-2024), I wanted to create a use case for a table that could be enjoyed without context or understanding of the data, I wanted to create a use case for the table that could be enjoyed without the context and understanding of the data. So, although I am not a professional game developer, I created a "Minesweeper" game using tables.
+I was thinking about what table to create for the [table contest 2024](https://forum.posit.co/tag/table-contest-2024), I wanted to create a use case for a table that could be enjoyed without context or understanding of the data. So, although I am not a professional game developer, I created a "Minesweeper" game using tables.
 
 ::: {.callout-note appearance="simple"}
 2. Various table
