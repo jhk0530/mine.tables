@@ -131,7 +131,7 @@ Server logic is consisted with 5 major parts.
 
 - See their own repo please.
 
-## D. Summary
+## E. Summary
 
 I made little game-like shiny application with various table R package, and I hope you enjoy it.
 
