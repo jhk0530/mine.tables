@@ -83,6 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#b.-how-to-play-mine-sweeper" id="toc-b.-how-to-play-mine-sweeper" class="nav-link" data-scroll-target="#b.-how-to-play-mine-sweeper">B. How to play mine-sweeper</a></li>
   <li><a href="#c.-how-to-use-gemini" id="toc-c.-how-to-use-gemini" class="nav-link" data-scroll-target="#c.-how-to-use-gemini">C. How to use Gemini</a></li>
   <li><a href="#d.-code-explanation" id="toc-d.-code-explanation" class="nav-link" data-scroll-target="#d.-code-explanation">D. Code explanation</a></li>
+  <li><a href="#d.-summary" id="toc-d.-summary" class="nav-link" data-scroll-target="#d.-summary">D. Summary</a></li>
   </ul>
 </nav>
 </div>
@@ -273,10 +274,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Part 2. Shiny UI</p>
+<p>Part 3. Shiny Server</p>
 </div>
 </div>
 </div>
+<p>Server logic is consisted with 5 major parts.</p>
+<ol type="1">
+<li>mine sweeper game</li>
+</ol>
+<ul>
+<li>Randomly generate data with given size and mine (START)</li>
+<li>Get click input from user</li>
+<li>Check if it is mine or not and show results</li>
+</ul>
+<ol start="2" type="1">
+<li>reactable</li>
+</ol>
+<ul>
+<li>To get clicked cell from user with reactable, I used <code>onClick</code> parameter of reactable to create “Shiny.setInputValue” (Javascript Event</li>
+<li>render mine count, and mine emoji with <code>color_text</code> function which return HTML element with color.</li>
+</ul>
+<ol start="3" type="1">
+<li>DT</li>
+</ol>
+<ul>
+<li>To implement <strong>Button-like</strong> table with DT. used <code>escape</code> parameter to use HTML tag.</li>
+<li>In cell element (Button) it uses <code>onclick</code> to open github repository.</li>
+<li>The <code>pagination</code> doesn’t affect functionality, but I left it on purpose because without it, it’s hard to tell it’s a table.</li>
+</ul>
+<ol start="4" type="1">
+<li>gt</li>
+</ol>
+<ul>
+<li>Also, to implement <strong>Button-like</strong> table with gt, I used HTML in <code>tab_header</code> to button. (Which has <code>onclick</code> for this document)</li>
+<li>However, gt seems must show <code>body</code> so I used <code>column</code> to button and body to just show empty.</li>
+</ul>
+<ol start="5" type="1">
+<li>gemini and cicerone</li>
+</ol>
+<ul>
+<li>See their own repo please.</li>
+</ul>
+</section>
+<section id="d.-summary" class="level2">
+<h2 class="anchored" data-anchor-id="d.-summary">D. Summary</h2>
+<p>I made little game-like shiny application with various table R package, and I hope you enjoy it.</p>
 </section>
 
 </main>
